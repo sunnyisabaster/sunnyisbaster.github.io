@@ -1,0 +1,19 @@
+pandas报DataFrame object has no attribute 'as_matrix'解决办法
+在网上找一些关于python机器学习的相关代码时，运行时可能会遇到
+
+‘DataFrame’ object has no attribute ‘as_matrix’
+
+这是因为网上的文章可能比较老，使用的是老版本的pandas，而自己的pandas要更加新，所有这个方法就没有了，因为已经被拿掉了。
+可以参考pandas的官方文档
+https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.0.0.html?highlight=as_matrix
+里面有明确说明
+
+Removed DataFrame.as_matrix, Series.as_matrix (GH18458)
+
+在GH18458这个补丁中，已经把DataFrame对象和Series对象的as_matrix方法都删除了，所以使用的时候自然就报错了。
+在GH18458（https://github.com/pandas-dev/pandas/pull/18458）这个补丁中有说明，使用values来代替。
+
+NDFrame.as_matrix is deprecated. Use NDFrame.values instead (:issue:18458).
+
+#df.as_matrix()改写成
+df.values
